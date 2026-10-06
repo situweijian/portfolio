@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>司徒炜健 · AI 项目作品集</title>
+<style>
+  :root {
+    --ink: #111;
+    --muted: #666;
+    --line: #e5e5e5;
+    --bg: #fff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.7;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header { padding: 72px 0 40px; border-bottom: 1px solid var(--ink); }
+  header h1 { font-size: 32px; font-weight: 600; letter-spacing: 2px; }
+  header .sub { color: var(--muted); margin-top: 6px; font-size: 15px; }
+  header .links { margin-top: 18px; font-size: 14px; }
+  header .links a, a.cardlink { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
+  header .links a:hover, a.cardlink:hover { color: var(--muted); border-color: var(--muted); }
+  header .links span.sep { margin: 0 12px; color: var(--line); }
+
+  /* Section */
+  section { padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .num { font-size: 13px; color: var(--muted); letter-spacing: 1px; }
+  section h2 { font-size: 22px; font-weight: 600; margin-top: 4px; }
+  .tagline { color: var(--muted); font-size: 15px; margin-top: 6px; }
+
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 8px; }
+  .stat {
+    border: 1px solid var(--ink);
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+  .stat b { font-size: 16px; font-weight: 600; margin-right: 4px; }
+
+  .tech { color: var(--muted); font-size: 13.5px; margin-top: 14px; }
+  .tech code {
+    font-family: "SF Mono", Consolas, monospace;
+    background: #f6f6f6;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 12.5px;
+  }
+  ul.points { margin: 14px 0 0 18px; font-size: 14.5px; }
+  ul.points li { margin: 4px 0; }
+
+  /* Images */
+  .shots { margin-top: 24px; }
+  .shots img { width: 100%; display: block; border: 1px solid var(--line); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  figcaption { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+  /* Flow diagram */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 24px; }
+  .flow .node {
+    border: 1px solid var(--ink);
+    padding: 8px 14px;
+    font-size: 13.5px;
+    background: #fff;
+  }
+  .flow .arrow { color: var(--muted); font-size: 14px; }
+
+  .cardlink { display: inline-block; margin-top: 22px; font-size: 14px; }
+
+  /* Footer */
+  footer { padding: 40px 0 64px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 640px) {
+    header { padding: 48px 0 32px; }
+    header h1 { font-size: 26px; }
+    .grid2 { grid-template-columns: 1fr; }
+    section { padding: 36px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <h1>司徒炜健</h1>
+    <div class="sub">AI 应用开发 / AIGC 工作流搭建 · 2027 届 · 人工智能技术应用专业</div>
+    <div class="links">
+      <a href="https://github.com/situweijian" target="_blank">GitHub @situweijian</a>
+      <span class="sep">|</span>
+      <a href="mailto:3578983046@qq.com">3578983046@qq.com</a>
+    </div>
+  </header>
+
+  <!-- 项目一：RAG -->
+  <section>
+    <div class="num">PROJECT 01</div>
+    <h2>RAG 校园迎新智能问答助手</h2>
+    <div class="tagline">本地知识库检索增强问答系统 · 全栈独立开发</div>
+
+    <div class="stats">
+      <div class="stat"><b>91.7%</b>Top-1 准确率</div>
+      <div class="stat"><b>95.8%</b>Top-3 覆盖率</div>
+      <div class="stat"><b>100%</b>无关问题拒答</div>
+      <div class="stat"><b>6 轮</b>多轮对话上下文</div>
+    </div>
+
+    <div class="tech">
+      <code>LangChain</code> <code>BGE-small-zh-v1.5 (ONNX 量化)</code> <code>ChromaDB</code> <code>DeepSeek</code> <code>Flask + SSE 流式</code>
+    </div>
+
+    <ul class="points">
+      <li>16 章节 FAQ 构建本地知识库，向量化入库，检索 Top-3 + L2 距离阈值过滤，基于 25 题测试集完成准确率评测</li>
+      <li>嵌入模型量化为 ONNX 本地推理，不依赖在线 Embedding 服务，检索毫秒级响应</li>
+      <li>Flask 后端 + SSE 流式输出，打字机效果，支持多轮对话与无关问题安全拒答</li>
+    </ul>
+
+    <div class="flow">
+      <div class="node">FAQ 知识库</div><div class="arrow">→</div>
+      <div class="node">BGE 向量化 (ONNX)</div><div class="arrow">→</div>
+      <div class="node">ChromaDB Top-3 检索</div><div class="arrow">→</div>
+      <div class="node">阈值过滤</div><div class="arrow">→</div>
+      <div class="node">DeepSeek 生成</div><div class="arrow">→</div>
+      <div class="node">SSE 流式输出</div>
+    </div>
+
+    <a class="cardlink" href="https://github.com/situweijian/rag-orientation-assistant-ai" target="_blank">查看完整代码 → github.com/situweijian/rag-orientation-assistant-ai</a>
+  </section>
+
+  <!-- 项目二：智感视觉 -->
+  <section>
+    <div class="num">PROJECT 02</div>
+    <h2>智感视觉 —— 时尚口碑双向画像系统</h2>
+    <div class="tagline">省级比赛作品 · 基于 AIGC 的电商口碑分析与海报生成 Agent</div>
+
+    <div class="stats">
+      <div class="stat"><b>94%</b>避雷因子提取准确率</div>
+      <div class="stat"><b>+40%</b>响应提速</div>
+      <div class="stat"><b>3 路</b>异步并行工作流</div>
+    </div>
+
+    <div class="tech">
+      <code>Coze 平台</code> <code>三路异步并行 Agent</code> <code>博查 AI 搜索</code> <code>Seedream 文生图</code> <code>RAG 知识库</code>
+    </div>
+
+    <ul class="points">
+      <li>输入任意商品关键词，三路 Agent 并行抓取与分析电商口碑：避雷评测 / 种草亮点 / 避坑因子挖掘</li>
+      <li>分析结果自动驱动 Seedream 生成「红榜 / 黑榜」种草海报与商品分析图，形成双向消费画像</li>
+      <li>异步并行架构将串行链路压缩，整体响应提速 40%</li>
+    </ul>
+
+    <div class="shots">
+      <figure>
+        <img src="assets/zhigan_sys-ui.png" alt="系统界面">
+        <figcaption>系统入口：对话式交互，输入商品即可触发全链路分析</figcaption>
+      </figure>
+      <figure style="margin-top:16px;">
+        <img src="assets/zhigan_workflow.png" alt="三路异步并行工作流">
+        <figcaption>Coze 工作流：三路异步并行（避坑评测 / 种草透镜 / 避坑挖掘）汇聚生成</figcaption>
+      </figure>
+      <div class="grid2" style="margin-top:16px;">
+        <figure>
+          <img src="assets/zhigan_redlist.png" alt="红榜海报">
+          <figcaption>红榜（优点）自动生成海报</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/zhigan_blacklist.png" alt="黑榜海报">
+          <figcaption>黑榜（缺点）自动生成海报</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <a class="cardlink" href="https://www.coze.cn/s/ka2FL30-oZo/" target="_blank">在线演示 → coze.cn/s/ka2FL30-oZo</a>
+  </section>
+
+  <!-- 项目三：Handpose -->
+  <section>
+    <div class="num">PROJECT 03</div>
+    <h2>手势识别实时交互系统</h2>
+    <div class="tagline">计算机视觉实训项目 · 实时摄像头手势检测</div>
+
+    <div class="stats">
+      <div class="stat"><b>21 点</b>手部关键点检测</div>
+      <div class="stat"><b>31 FPS</b>实时帧率</div>
+      <div class="stat"><b>3 层</b>防抖校验</div>
+    </div>
+
+    <div class="tech">
+      <code>MediaPipe Hands</code> <code>OpenCV</code> <code>三层防抖状态机</code> <code>EMA 平滑滤波</code>
+    </div>
+
+    <ul class="points">
+      <li>MediaPipe 提取 21 个手部关键点，OpenCV 实时渲染，笔记本摄像头下稳定跑到 31 FPS</li>
+      <li>针对关键点抖动问题，设计「帧间校验 + 置信度门槛 + 状态确认」三层防抖，配合 EMA 平滑滤波，手势判定稳定不闪跳</li>
+    </ul>
+
+    <div class="flow">
+      <div class="node">摄像头采集</div><div class="arrow">→</div>
+      <div class="node">MediaPipe 21 关键点</div><div class="arrow">→</div>
+      <div class="node">三层防抖校验</div><div class="arrow">→</div>
+      <div class="node">EMA 平滑</div><div class="arrow">→</div>
+      <div class="node">手势判定 / 交互</div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 司徒炜健</div>
+    <div>Python · LangChain · RAG · Agent 工作流 · Computer Vision</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
