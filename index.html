@@ -104,28 +104,28 @@
     <div class="tagline">本地知识库检索增强问答系统 · 全栈独立开发</div>
 
     <div class="stats">
-      <div class="stat"><b>91.7%</b>Top-1 准确率</div>
-      <div class="stat"><b>95.8%</b>Top-3 覆盖率</div>
+      <div class="stat"><b>58 题</b>自建评测集</div>
+      <div class="stat"><b>100%</b>Top-3 覆盖率</div>
+      <div class="stat"><b>0%</b>误拒率</div>
       <div class="stat"><b>100%</b>无关问题拒答</div>
-      <div class="stat"><b>6 轮</b>多轮对话上下文</div>
     </div>
 
     <div class="tech">
-      <code>LangChain</code> <code>BGE-small-zh-v1.5 (ONNX 量化)</code> <code>ChromaDB</code> <code>DeepSeek</code> <code>Flask + SSE 流式</code>
+      <code>LangChain</code> <code>BGE-small-zh-v1.5 (ONNX 量化)</code> <code>BM25 混合检索</code> <code>ChromaDB</code> <code>DeepSeek + SSE 流式</code> <code>Flask</code>
     </div>
 
     <ul class="points">
-      <li>16 章节 FAQ 构建本地知识库，向量化入库，检索 Top-3 + L2 距离阈值过滤，基于 25 题测试集完成准确率评测</li>
-      <li>嵌入模型量化为 ONNX 本地推理，不依赖在线 Embedding 服务，检索毫秒级响应</li>
-      <li>Flask 后端 + SSE 流式输出，打字机效果，支持多轮对话与无关问题安全拒答</li>
+      <li>校园 FAQ 构建本地知识库（多文件 + 来源与更新时间元数据），向量检索之外自研 BM25 词面召回做混合排序，自建 58 题评测集（含 18 题独立问法集）完成准确率验证</li>
+      <li>嵌入模型量化为 ONNX 本地推理，不依赖在线 Embedding 服务；命中判定采用「向量距离 + 中文主题词重合」双判据，兼顾不误答与不误拒</li>
+      <li>生成后对答案中的数字、日期、电话回查资料，对不上则重写或降级返回原文；Flask 后端 + SSE 流式输出，支持多轮追问改写</li>
     </ul>
 
     <div class="flow">
       <div class="node">FAQ 知识库</div><div class="arrow">→</div>
-      <div class="node">BGE 向量化 (ONNX)</div><div class="arrow">→</div>
-      <div class="node">ChromaDB Top-3 检索</div><div class="arrow">→</div>
-      <div class="node">阈值过滤</div><div class="arrow">→</div>
+      <div class="node">BGE 向量 + BM25 混合检索</div><div class="arrow">→</div>
+      <div class="node">章节聚合 + 双判据判定</div><div class="arrow">→</div>
       <div class="node">DeepSeek 生成</div><div class="arrow">→</div>
+      <div class="node">事实校验</div><div class="arrow">→</div>
       <div class="node">SSE 流式输出</div>
     </div>
 

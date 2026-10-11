@@ -1,0 +1,8 @@
+# 文本用 LF，图片等二进制文件禁止换行转换
+* text=auto eol=lf
+
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.svg  text eol=lf
