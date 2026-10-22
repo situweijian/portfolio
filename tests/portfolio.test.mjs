@@ -12,7 +12,7 @@ test('portfolio presents a playable film hero without autoplay', () => {
   assert.match(html, /<video[^>]+id="portfolio-film"/);
   assert.match(html, /controls/);
   assert.match(html, /preload="none"/);
-  assert.match(html, /poster="assets\/film\/film-poster\.png"/);
+  assert.match(html, /poster="assets\/film\/film-poster\.jpg"/);
   assert.match(html, /src="assets\/film\/portfolio-film\.mp4"/);
   assert.match(html, /<track[^>]+kind="captions"/);
   assert.doesNotMatch(html, /autoplay/);
@@ -54,6 +54,7 @@ test('portfolio includes sharing metadata and avoids exposed phone numbers', () 
 test('project imagery loads reliably and carries useful alternative text', () => {
   assert.match(html, /class="skip-link"/);
   assert.match(html, /decoding="async"/);
-  assert.match(html, /alt="[^"]+"[^>]*decoding="async"/);
-  assert.doesNotMatch(html, /loading="lazy"/);
+  assert.match(html, /assets\/film\/still-s01\.webp/);
+  assert.match(html, /assets\/zhigan_sys-ui\.webp/);
+  assert.match(html, /alt="[^"]+"[^>]*width="[0-9]+"[^>]*height="[0-9]+"/);
 });
