@@ -51,8 +51,9 @@ test('portfolio includes sharing metadata and avoids exposed phone numbers', () 
   assert.doesNotMatch(html, /tel:\+?[\d-]+/);
 });
 
-test('project imagery loads lazily and carries useful alternative text', () => {
+test('project imagery loads reliably and carries useful alternative text', () => {
   assert.match(html, /class="skip-link"/);
-  assert.match(html, /loading="lazy"/);
-  assert.match(html, /alt="[^"]+"[^>]*loading="lazy"/);
+  assert.match(html, /decoding="async"/);
+  assert.match(html, /alt="[^"]+"[^>]*decoding="async"/);
+  assert.doesNotMatch(html, /loading="lazy"/);
 });
