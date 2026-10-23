@@ -119,37 +119,30 @@
         </div>
       </article>
 
-      <article class="project project-rag reveal" data-project="rag">
-        <div class="rag-console">
-          <div class="console-bar">
-            <span class="console-title">校园迎新智能问答</span>
-            <span class="console-status">检索完成</span>
+      <article class="project project-rag reveal" id="rag" data-project="rag">
+        <figure class="rag-interface">
+          <div class="rag-interface-main">
+            <img src="assets/rag-interface.webp"
+                 alt="校园迎新智能问答助手新版桌面界面：深墨绿背景、宋体标题和校园问题入口"
+                 width="1440" height="1000" loading="lazy" decoding="async">
           </div>
-          <div class="console-query">
-            <span class="console-label">问题</span>
-            <p>清远校区新生报到需要准备哪些材料？</p>
+          <div class="rag-interface-mobile">
+            <img src="assets/rag-interface-mobile.webp"
+                 alt="校园迎新智能问答助手新版手机界面"
+                 width="390" height="844" loading="lazy" decoding="async">
           </div>
-          <div class="console-answer">
-            <span class="console-label">回答</span>
-            <p>报到材料包括录取通知书、身份证、纸质档案等。回答会同时展示命中的校园资料与更新时间。</p>
-          </div>
-          <div class="source-row">
-            <span>来源 01</span>
-            <span>来源 02</span>
-            <span>检索详情</span>
-          </div>
-          <p class="console-note">界面示意，项目包含 14 篇文档 / 14 个检索片段</p>
-        </div>
+          <figcaption>桌面与手机实机界面</figcaption>
+        </figure>
         <div class="project-copy">
           <p class="project-kicker">RAG 应用</p>
           <h3>校园迎新智能问答助手</h3>
-          <p class="project-lead">面向真实校园问题，完成检索、回答、来源展示、事实校验与未命中问题闭环。</p>
+          <p class="project-lead">面向新生报到、宿舍、学费等高频问题，完成检索、回答、来源展示、事实校验与未命中问题闭环。</p>
           <dl class="metric-row">
             <div><dt>58 题</dt><dd>自建评测集</dd></div>
             <div><dt>100%</dt><dd>Top-3 覆盖率</dd></div>
             <div><dt>100%</dt><dd>无关问题拒答</dd></div>
           </dl>
-          <p class="boundary-note">现有评测聚焦检索层，知识库规模仍为 14 篇文档；结果应结合样本规模理解，而不是泛化为通用大型知识库成绩。</p>
+          <p class="boundary-note">当前知识库为 13 篇文档 / 14 个检索片段，现有评测聚焦检索层；结果应结合样本规模理解，而不是泛化为通用大型知识库成绩。</p>
           <div class="pipeline">
             <span>BGE 向量</span>
             <span>BM25 词面</span>
