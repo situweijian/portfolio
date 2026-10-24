@@ -94,7 +94,7 @@
 
       <article class="project project-film reveal" data-project="film">
         <div class="project-copy">
-          <p class="project-kicker">AIGC 概念短片</p>
+          <p class="project-kicker">AIGC 影像与实验</p>
           <h3>这次只投一家</h3>
           <p class="project-lead">把“找实习很久没有回应”的压抑，做成一支克制、不卖惨的 40 秒概念片。</p>
           <p>人物、场景与镜头均由 AI 生成，再通过剪辑、字幕、配音和真实界面素材完成叙事。重点不是展示抽卡，而是控制人物一致性、固定机位与八段镜头的剪辑节奏。</p>
@@ -115,6 +115,35 @@
           <figure class="still still-c">
             <img src="assets/film/still-s08.webp" alt="男生在电脑前准备发送项目链接" width="1600" height="900" decoding="async" fetchpriority="low">
             <figcaption>只投一次认真准备的递送</figcaption>
+          </figure>
+        </div>
+        <div class="motion-feature">
+          <div class="motion-feature-copy">
+            <p class="project-kicker">最新影像实验</p>
+            <h4>家庭生活场景实验</h4>
+            <p>一段 12 秒的旧式家庭室内场景。人物、空间、动作与同步音频在一次生成流程中完成，重点验证人物站位、长镜头稳定性和环境氛围。</p>
+            <ul class="experiment-tags">
+              <li>MiniMax H3 + ComfyUI</li>
+              <li>3072×1728 生成源片</li>
+              <li>48fps / 12.2 秒</li>
+              <li>原生音频</li>
+            </ul>
+          </div>
+          <figure class="motion-player">
+            <video
+              id="family-experiment"
+              controls
+              preload="none"
+              playsinline
+              poster="assets/film/family-experiment-poster.webp"
+              aria-label="家庭生活场景实验，12 秒 AIGC 影像"
+            >
+              <source src="assets/film/family-experiment.mp4" type="video/mp4">
+              <track kind="captions" src="assets/film/family-experiment.zh-CN.vtt" srclang="zh" label="中文">
+              当前浏览器不支持视频播放，可下载
+              <a href="assets/film/family-experiment.mp4">家庭场景实验文件</a>。
+            </video>
+            <figcaption>最新实验：更完整的空间层次与人物细节</figcaption>
           </figure>
         </div>
       </article>

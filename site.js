@@ -59,15 +59,18 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
   revealItems.forEach((item) => revealObserver.observe(item));
 }
 
-if ('IntersectionObserver' in window && film) {
+if ('IntersectionObserver' in window) {
+  const portfolioVideos = [...document.querySelectorAll('video')];
   const videoObserver = new IntersectionObserver(
-    ([entry]) => {
-      if (!entry.isIntersecting && !film.paused) {
-        film.pause();
-      }
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && !entry.target.paused) {
+          entry.target.pause();
+        }
+      });
     },
     { threshold: 0.15 },
   );
 
-  videoObserver.observe(film);
+  portfolioVideos.forEach((video) => videoObserver.observe(video));
 }

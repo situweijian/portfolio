@@ -36,6 +36,17 @@ test('portfolio includes the three evidence-backed projects', () => {
   assert.match(html, /40%/);
 });
 
+test('AIGC project includes the new family-scene experiment', () => {
+  assert.match(html, /id="family-experiment"/);
+  assert.match(html, /src="assets\/film\/family-experiment\.mp4"/);
+  assert.match(html, /poster="assets\/film\/family-experiment-poster\.webp"/);
+  assert.match(html, /family-experiment\.zh-CN\.vtt/);
+  assert.match(html, /家庭生活场景实验/);
+  assert.match(html, /MiniMax H3/);
+  assert.match(html, /3072×1728/);
+  assert.match(js, /querySelectorAll\('video'\)/);
+});
+
 test('portfolio shows the current RAG product interface', () => {
   assert.match(html, /class="rag-interface"/);
   assert.match(html, /class="rag-interface-main"/);
