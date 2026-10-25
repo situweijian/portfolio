@@ -24,17 +24,54 @@ test('portfolio exposes the dual AI application and AIGC positioning', () => {
   assert.match(html, /把业务问题，做成能运行、能证明的 AI 作品/);
 });
 
-test('portfolio includes the four evidence-backed projects', () => {
+test('portfolio includes the six evidence-backed projects', () => {
   assert.match(html, /data-project="film"/);
   assert.match(html, /data-project="rag"/);
+  assert.match(html, /data-project="ai-job-helper"/);
+  assert.match(html, /data-project="xiangban"/);
   assert.match(html, /data-project="handpose"/);
   assert.match(html, /data-project="zhigan"/);
+  assert.match(html, /六件作品/);
+  assert.deepEqual(
+    [...html.matchAll(/data-project="([^"]+)"/g)].map((match) => match[1]),
+    ['film', 'rag', 'ai-job-helper', 'xiangban', 'handpose', 'zhigan'],
+  );
   assert.match(html, /58 题/);
   assert.match(html, /13 篇文档/);
   assert.match(html, /14 个检索片段/);
   assert.doesNotMatch(html, /14 篇文档 \/ 14 个检索片段/);
   assert.match(html, /响应时间缩短/);
   assert.match(html, /40%/);
+});
+
+test('AI job helper is presented as a real product loop with a live demo and honest ownership boundary', () => {
+  assert.match(html, /id="ai-job-helper"/);
+  assert.match(html, /AI 求职好帮手/);
+  assert.match(html, /简历诊断/);
+  assert.match(html, /岗位匹配/);
+  assert.match(html, /多轮模拟面试/);
+  assert.match(html, /云端记录/);
+  assert.match(html, /本地测试 FCP 降低约 32%/);
+  assert.match(html, /WorkBuddy BaaS/);
+  assert.match(html, /不是自研基础模型/);
+  assert.match(html, /https:\/\/ai-job-helper-85993\.app\.workbuddy\.host\//);
+  assert.match(html, /assets\/ai-job-helper-home\.webp/);
+  assert.match(html, /assets\/ai-job-helper-resume\.webp/);
+  assert.match(html, /assets\/ai-job-helper-match\.webp/);
+});
+
+test('Xiangban documents the avatar generation, voice and mouth motion loop without inventing a public URL', () => {
+  assert.match(html, /id="xiangban"/);
+  assert.match(html, /像伴/);
+  assert.match(html, /轻 Q/);
+  assert.match(html, /人物照片/);
+  assert.match(html, /虚拟形象/);
+  assert.match(html, /拟人语音/);
+  assert.match(html, /真实语音包络驱动嘴型/);
+  assert.match(html, /本地运行应用/);
+  assert.match(html, /assets\/xiangban-avatar\.webp/);
+  assert.match(html, /assets\/xiangban-studio\.webp/);
+  assert.doesNotMatch(html, /href="[^"]*127\.0\.0\.1/);
 });
 
 test('computer-vision project explains the real gesture interaction boundary', () => {
@@ -101,6 +138,17 @@ test('portfolio provides navigation, accessible focus, and reduced motion suppor
   assert.match(css, /:focus-visible/);
   assert.match(css, /prefers-reduced-motion/);
   assert.match(js, /IntersectionObserver/);
+});
+
+test('motion is progressive, readable and respects reduced-motion preferences', () => {
+  assert.match(css, /--reveal-distance/);
+  assert.match(css, /@starting-style/);
+  assert.match(css, /transition-delay/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.js \.reveal,[\s\S]*?opacity:\s*1/s);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.js \.reveal\.is-visible[\s\S]*?transition:\s*none/s);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?animation-duration:\s*0s\s*!important/s);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?transition-duration:\s*0s\s*!important/s);
 });
 
 test('portfolio includes sharing metadata and avoids exposed phone numbers', () => {

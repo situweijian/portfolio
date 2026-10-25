@@ -14,6 +14,8 @@
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --page: min(92vw, 1440px);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-distance: 20px;
+  --reveal-delay: 0ms;
 }
 
 * {
@@ -825,6 +827,158 @@ main {
   transform: scale(1.018);
 }
 
+.project-job {
+  grid-template-columns: minmax(280px, 0.76fr) minmax(0, 1.24fr);
+}
+
+.job-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-content: start;
+}
+
+.job-gallery figure {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--night-raised);
+}
+
+.job-gallery .job-home {
+  grid-column: 1 / -1;
+}
+
+.job-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 560ms var(--ease);
+}
+
+.job-gallery figure:hover img {
+  transform: scale(1.012);
+}
+
+.job-gallery figcaption {
+  padding: 11px 13px 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.project-xiangban {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+}
+
+.xiangban-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(160px, 0.48fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.xiangban-studio-panel,
+.xiangban-avatar-panel {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--night-raised);
+}
+
+.xiangban-studio-panel {
+  min-height: 100%;
+}
+
+.xiangban-studio-panel img,
+.xiangban-avatar-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 620ms var(--ease);
+}
+
+.xiangban-studio-panel::after,
+.xiangban-avatar-panel::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 38%;
+  background: linear-gradient(transparent, rgba(5, 10, 14, 0.88));
+  content: "";
+  pointer-events: none;
+}
+
+.xiangban-studio-panel:hover img,
+.xiangban-avatar-panel:hover img {
+  transform: scale(1.016);
+}
+
+.xiangban-studio-panel figcaption,
+.xiangban-avatar-panel figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 14px;
+  bottom: 12px;
+  left: 14px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 11px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+.xiangban-signals {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.xiangban-avatar-panel img {
+  aspect-ratio: 1;
+}
+
+.xiangban-voice-panel {
+  display: grid;
+  grid-template-rows: auto minmax(76px, 1fr) auto;
+  gap: 12px;
+  min-height: 152px;
+  padding: 17px 16px 15px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(145deg, rgba(169, 201, 213, 0.1), transparent 62%),
+    #0b171d;
+}
+
+.xiangban-voice-panel p,
+.xiangban-voice-panel span {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.xiangban-voice-panel p {
+  color: var(--ice);
+}
+
+.voice-envelope {
+  display: flex;
+  height: 100%;
+  min-height: 76px;
+  align-items: center;
+  gap: 4px;
+}
+
+.voice-envelope i {
+  display: block;
+  flex: 1;
+  height: calc(var(--level) * 68px);
+  min-height: 7px;
+  max-height: 68px;
+  background: linear-gradient(180deg, var(--ice), rgba(169, 201, 213, 0.26));
+}
 .about {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
@@ -905,19 +1059,49 @@ main {
 
 .js .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 700ms ease, transform 800ms var(--ease);
+  transform: translate3d(0, var(--reveal-distance), 0);
+  transition:
+    opacity 540ms ease,
+    transform 680ms var(--ease);
+  transition-delay: var(--reveal-delay);
 }
 
 .js .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+}
+
+@starting-style {
+  .js .reveal.is-visible {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance), 0);
+  }
+}
+
+.js .project > * {
+  opacity: 0;
+  transform: translate3d(0, calc(var(--reveal-distance) * 0.42), 0);
+  transition:
+    opacity 480ms ease,
+    transform 620ms var(--ease);
+  transition-delay: calc(var(--reveal-delay) + 70ms);
+}
+
+.js .project > :first-child {
+  transition-delay: var(--reveal-delay);
+}
+
+.js .project.is-visible > * {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 @media (max-width: 980px) {
   .hero-copy,
   .about,
   .project-rag,
+  .project-job,
+  .project-xiangban,
   .project-handpose {
     grid-template-columns: 1fr;
   }
@@ -1070,6 +1254,27 @@ main {
     min-height: 250px;
   }
 
+  .job-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .job-gallery .job-home {
+    grid-column: 1;
+  }
+
+  .xiangban-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .xiangban-signals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+
+  .xiangban-voice-panel {
+    min-height: 100%;
+  }
+
   .metric-row {
     grid-template-columns: 1fr;
     gap: 0;
@@ -1138,13 +1343,18 @@ main {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0s !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
   }
 
-  .js .reveal {
+  .js .reveal,
+  .js .reveal.is-visible,
+  .js .project > *,
+  .js .project.is-visible > * {
     opacity: 1;
     transform: none;
+    transition: none;
   }
 }
