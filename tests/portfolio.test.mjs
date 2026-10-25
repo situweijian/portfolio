@@ -41,10 +41,12 @@ test('computer-vision project explains the real gesture interaction boundary', (
   assert.match(html, /隔空手势画图/);
   assert.match(html, /MediaPipe Hands/);
   assert.match(html, /21 个手部关键点/);
-  assert.match(html, /30 项/);
+  assert.match(html, /38 项/);
   assert.match(html, /6 类/);
   assert.match(html, /One Euro 平滑/);
-  assert.match(html, /120 帧真实视频验证/);
+  assert.match(html, /原生 DPI 显示适配/);
+  assert.match(html, /两帧手势确认/);
+  assert.match(html, /真实演示视频验证/);
   assert.match(html, /固定阈值判断手指状态/);
   assert.match(html, /没有训练新的手势分类模型/);
   assert.match(html, /assets\/handpose-studio\.webp/);
@@ -64,6 +66,21 @@ test('AIGC project includes the new family-scene experiment', () => {
   assert.match(html, /MiniMax H3/);
   assert.match(html, /3072×1728/);
   assert.match(js, /querySelectorAll\('video'\)/);
+});
+
+test('both films sit side by side in the opening and stack on narrow screens', () => {
+  const projectsIndex = html.indexOf('<section class="projects"');
+  const familyFilmIndex = html.indexOf('id="family-experiment"');
+  const filmPairIndex = html.indexOf('class="film-duo"');
+
+  assert.ok(filmPairIndex > 0);
+  assert.ok(familyFilmIndex > filmPairIndex);
+  assert.ok(familyFilmIndex < projectsIndex);
+  assert.equal((html.match(/data-film-card/g) || []).length, 2);
+  assert.doesNotMatch(html, /class="motion-feature"/);
+  assert.match(css, /\.film-duo\s*\{[^}]*grid-template-columns:\s*repeat\(2,/s);
+  assert.match(css, /@media \(max-width: 980px\)[\s\S]*?\.film-duo\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(js, /querySelectorAll\('\[data-film-card\]'\)/);
 });
 
 test('portfolio shows the current RAG product interface', () => {

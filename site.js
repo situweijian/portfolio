@@ -1,10 +1,6 @@
 document.documentElement.classList.add('js');
 
 const header = document.querySelector('[data-header]');
-const film = document.querySelector('#portfolio-film');
-const filmStage = film?.closest('.film-stage');
-const playButton = document.querySelector('[data-play-film]');
-const timecode = document.querySelector('[data-timecode]');
 
 const setHeaderState = () => {
   header?.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -13,12 +9,33 @@ const setHeaderState = () => {
 setHeaderState();
 window.addEventListener('scroll', setHeaderState, { passive: true });
 
-if (film && filmStage && playButton) {
-  const showPlayButton = () => filmStage.classList.remove('is-playing');
-  const hidePlayButton = () => filmStage.classList.add('is-playing');
+const filmControllers = [...document.querySelectorAll('[data-film-card]')]
+  .map((card) => ({
+    card,
+    film: card.querySelector('video'),
+    stage: card.querySelector('[data-film-stage]'),
+    playButton: card.querySelector('[data-play-film]'),
+    timecode: card.querySelector('[data-timecode]'),
+  }))
+  .filter(({ film, stage, playButton }) => film && stage && playButton);
+
+filmControllers.forEach(({ film, stage, playButton, timecode }) => {
+  const showPlayButton = () => stage.classList.remove('is-playing');
+  const hidePlayButton = () => stage.classList.add('is-playing');
+  const duration = Number(timecode?.dataset.duration) || 0;
+
+  const writeTimecode = () => {
+    if (!timecode) return;
+    const current = Math.min(film.currentTime || 0, duration);
+    const seconds = String(Math.floor(current)).padStart(2, '0');
+    timecode.textContent = `00:${seconds} / 00:${String(duration).padStart(2, '0')}`;
+  };
 
   playButton.addEventListener('click', () => {
     hidePlayButton();
+    filmControllers.forEach((controller) => {
+      if (controller.film !== film) controller.film.pause();
+    });
     film.play().catch(() => {
       showPlayButton();
       film.controls = true;
@@ -29,14 +46,8 @@ if (film && filmStage && playButton) {
   film.addEventListener('pause', showPlayButton);
   film.addEventListener('ended', showPlayButton);
 
-  if (timecode) {
-    film.addEventListener('timeupdate', () => {
-      const current = Math.min(film.currentTime || 0, 40);
-      const seconds = String(Math.floor(current)).padStart(2, '0');
-      timecode.textContent = `00:${seconds} / 00:40`;
-    });
-  }
-}
+  film.addEventListener('timeupdate', writeTimecode);
+});
 
 const revealItems = [...document.querySelectorAll('.reveal')];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

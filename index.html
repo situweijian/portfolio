@@ -46,35 +46,67 @@
         </div>
       </div>
 
-      <figure class="film-hero" id="film">
-        <div class="film-stage">
-          <div class="film-topline" aria-hidden="true">
-            <span>AI 概念短片</span>
-            <span data-timecode>00:00 / 00:40</span>
+      <section class="film-duo" id="film" aria-label="AI 影像双片预览">
+        <figure class="film-card film-card-experiment" data-film-card>
+          <div class="film-stage" data-film-stage>
+            <div class="film-topline" aria-hidden="true">
+              <span>新片 · 家庭场景实验</span>
+              <span data-timecode data-duration="12">00:00 / 00:12</span>
+            </div>
+            <video
+              id="family-experiment"
+              controls
+              preload="none"
+              playsinline
+              poster="assets/film/family-experiment-poster.webp"
+              aria-label="家庭生活场景实验，12 秒 AIGC 影像"
+            >
+              <source src="assets/film/family-experiment.mp4" type="video/mp4">
+              <track kind="captions" src="assets/film/family-experiment.zh-CN.vtt" srclang="zh" label="中文">
+              当前浏览器不支持视频播放，可下载
+              <a href="assets/film/family-experiment.mp4">家庭场景实验文件</a>。
+            </video>
+            <button class="film-play" type="button" data-play-film aria-label="播放家庭生活场景实验">
+              <span class="play-icon" aria-hidden="true"></span>
+              <span>播放新片</span>
+            </button>
           </div>
-          <video
-            id="portfolio-film"
-            controls
-            preload="none"
-            playsinline
-            poster="assets/film/film-poster.jpg"
-            aria-label="《这次只投一家》AI 概念短片"
-          >
-            <source src="assets/film/portfolio-film.mp4" type="video/mp4">
-            <track kind="captions" src="assets/film/portfolio-film.zh-CN.vtt" srclang="zh" label="中文">
-            当前浏览器不支持视频播放，可下载
-            <a href="assets/film/portfolio-film.mp4">作品片文件</a>。
-          </video>
-          <button class="film-play" type="button" data-play-film aria-label="播放《这次只投一家》">
-            <span class="play-icon" aria-hidden="true"></span>
-            <span>播放作品片</span>
-          </button>
-        </div>
-        <figcaption class="film-caption">
-          <span class="film-title">《这次只投一家》</span>
-          <span>40 秒 / 8 段镜头 / AIGC 概念片</span>
-        </figcaption>
-      </figure>
+          <figcaption class="film-caption">
+            <span class="film-title">家庭生活场景实验</span>
+            <span>12.2 秒 / 3072×1728 / MiniMax H3 / 原生音频</span>
+          </figcaption>
+        </figure>
+
+        <figure class="film-card" data-film-card>
+          <div class="film-stage" data-film-stage>
+            <div class="film-topline" aria-hidden="true">
+              <span>AI 概念短片</span>
+              <span data-timecode data-duration="40">00:00 / 00:40</span>
+            </div>
+            <video
+              id="portfolio-film"
+              controls
+              preload="none"
+              playsinline
+              poster="assets/film/film-poster.jpg"
+              aria-label="《这次只投一家》AI 概念短片"
+            >
+              <source src="assets/film/portfolio-film.mp4" type="video/mp4">
+              <track kind="captions" src="assets/film/portfolio-film.zh-CN.vtt" srclang="zh" label="中文">
+              当前浏览器不支持视频播放，可下载
+              <a href="assets/film/portfolio-film.mp4">作品片文件</a>。
+            </video>
+            <button class="film-play" type="button" data-play-film aria-label="播放《这次只投一家》">
+              <span class="play-icon" aria-hidden="true"></span>
+              <span>播放作品片</span>
+            </button>
+          </div>
+          <figcaption class="film-caption">
+            <span class="film-title">《这次只投一家》</span>
+            <span>40 秒 / 8 段镜头 / AIGC 概念片</span>
+          </figcaption>
+        </figure>
+      </section>
     </section>
 
     <section class="statement reveal" aria-label="工作理念">
@@ -115,35 +147,6 @@
           <figure class="still still-c">
             <img src="assets/film/still-s08.webp" alt="男生在电脑前准备发送项目链接" width="1600" height="900" decoding="async" fetchpriority="low">
             <figcaption>只投一次认真准备的递送</figcaption>
-          </figure>
-        </div>
-        <div class="motion-feature">
-          <div class="motion-feature-copy">
-            <p class="project-kicker">最新影像实验</p>
-            <h4>家庭生活场景实验</h4>
-            <p>一段 12 秒的旧式家庭室内场景。人物、空间、动作与同步音频在一次生成流程中完成，重点验证人物站位、长镜头稳定性和环境氛围。</p>
-            <ul class="experiment-tags">
-              <li>MiniMax H3 + ComfyUI</li>
-              <li>3072×1728 生成源片</li>
-              <li>48fps / 12.2 秒</li>
-              <li>原生音频</li>
-            </ul>
-          </div>
-          <figure class="motion-player">
-            <video
-              id="family-experiment"
-              controls
-              preload="none"
-              playsinline
-              poster="assets/film/family-experiment-poster.webp"
-              aria-label="家庭生活场景实验，12 秒 AIGC 影像"
-            >
-              <source src="assets/film/family-experiment.mp4" type="video/mp4">
-              <track kind="captions" src="assets/film/family-experiment.zh-CN.vtt" srclang="zh" label="中文">
-              当前浏览器不支持视频播放，可下载
-              <a href="assets/film/family-experiment.mp4">家庭场景实验文件</a>。
-            </video>
-            <figcaption>最新实验：更完整的空间层次与人物细节</figcaption>
           </figure>
         </div>
       </article>
@@ -187,13 +190,13 @@
           <p class="project-kicker">计算机视觉 / 创作工具</p>
           <h3>隔空手势画图</h3>
           <p class="project-lead">把摄像头里的手部动作变成画笔，在不接触键鼠的情况下完成选色、绘画、擦除与撤销。</p>
-          <p>在 MediaPipe Hands 输出的 21 个手部关键点基础上重做浅色创作工作台，加入笔触级撤销、独立绘图层、双手分工与 One Euro 平滑。OpenCV 负责最新帧读取、工具栏命中、局部画布合成和实时反馈。</p>
+          <p>在 MediaPipe Hands 输出的 21 个手部关键点基础上重做浅色创作工作台，加入笔触级撤销、独立绘图层、双手分工与 One Euro 平滑。OpenCV 负责最新帧读取、工具栏命中、局部画布合成和实时反馈。本轮还加入 Windows 原生 DPI 显示适配和两帧手势确认，减轻界面缩放模糊与起笔延迟。</p>
           <dl class="metric-row">
             <div><dt>21 个</dt><dd>手部关键点</dd></div>
-            <div><dt>30 项</dt><dd>自动化测试</dd></div>
+            <div><dt>38 项</dt><dd>自动化测试</dd></div>
             <div><dt>6 类</dt><dd>固定手势指令</dd></div>
           </dl>
-          <p class="boundary-note">当前使用固定阈值判断手指状态，没有训练新的手势分类模型；桌面流程已用 120 帧真实视频验证，效果与帧率仍会受光照、遮挡、摄像头角度和整机负载影响。</p>
+          <p class="boundary-note">当前使用固定阈值判断手指状态，没有训练新的手势分类模型；桌面流程已用真实演示视频验证，效果与帧率仍会受光照、遮挡、摄像头角度和整机负载影响。</p>
           <div class="pipeline">
             <span>MediaPipe Hands</span>
             <span>One Euro 平滑</span>
