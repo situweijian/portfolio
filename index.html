@@ -184,33 +184,33 @@
 
       <article class="project project-handpose reveal" id="handpose" data-project="handpose">
         <div class="project-copy">
-          <p class="project-kicker">计算机视觉 / 交互实验</p>
+          <p class="project-kicker">计算机视觉 / 创作工具</p>
           <h3>隔空手势画图</h3>
           <p class="project-lead">把摄像头里的手部动作变成画笔，在不接触键鼠的情况下完成选色、绘画、擦除与撤销。</p>
-          <p>通过 MediaPipe Hands 获取 21 个手部关键点，再把手指伸展状态映射成固定交互规则；OpenCV 负责摄像头帧读取、工具栏命中、画布叠加与实时反馈。</p>
+          <p>在 MediaPipe Hands 输出的 21 个手部关键点基础上重做浅色创作工作台，加入笔触级撤销、独立绘图层、双手分工与 One Euro 平滑。OpenCV 负责最新帧读取、工具栏命中、局部画布合成和实时反馈。</p>
           <dl class="metric-row">
             <div><dt>21 个</dt><dd>手部关键点</dd></div>
-            <div><dt>6 项</dt><dd>交互功能扩展</dd></div>
-            <div><dt>实时</dt><dd>摄像头手势反馈</dd></div>
+            <div><dt>30 项</dt><dd>自动化测试</dd></div>
+            <div><dt>6 类</dt><dd>固定手势指令</dd></div>
           </dl>
-          <p class="boundary-note">当前使用固定阈值判断手指状态，没有训练新的手势分类模型；效果会受光照、遮挡、摄像头角度和左右手差异影响。</p>
+          <p class="boundary-note">当前使用固定阈值判断手指状态，没有训练新的手势分类模型；桌面流程已用 120 帧真实视频验证，效果与帧率仍会受光照、遮挡、摄像头角度和整机负载影响。</p>
           <div class="pipeline">
             <span>MediaPipe Hands</span>
-            <span>手指状态机</span>
-            <span>OpenCV 画布</span>
-            <span>手势工具栏</span>
+            <span>One Euro 平滑</span>
+            <span>独立绘图层</span>
+            <span>固定手势规则</span>
           </div>
         </div>
         <div class="handpose-gallery">
           <figure class="handpose-session">
-            <img src="assets/handpose-session.webp" alt="隔空手势画图程序实机界面，顶部是颜色、橡皮擦和清空工具栏" width="888" height="497" loading="lazy" decoding="async">
-            <figcaption>摄像头实时手势会话</figcaption>
+            <img src="assets/handpose-studio.webp" alt="浅灰蓝隔空手势创作工作台，左侧是画笔工具栏，中间是绘图纸，右侧是摄像头与手势状态" width="1440" height="900" loading="lazy" decoding="async">
+            <figcaption>浅色创作工作台 · 1440×900 界面预览</figcaption>
           </figure>
           <figure class="handpose-landmarks">
             <img src="assets/handpose-landmarks.webp" alt="MediaPipe 手部 21 个关键点与左右手映射示意" width="870" height="637" loading="lazy" decoding="async">
             <figcaption>21 点手部关键点</figcaption>
           </figure>
-          <div class="handpose-model" aria-label="手势识别到绘画指令的处理流程">
+          <div class="handpose-model" role="group" aria-label="手势识别到绘画指令的处理流程">
             <p>手势到指令</p>
             <ol>
               <li><span>01</span>关键点定位</li>

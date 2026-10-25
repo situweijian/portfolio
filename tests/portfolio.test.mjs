@@ -41,10 +41,18 @@ test('computer-vision project explains the real gesture interaction boundary', (
   assert.match(html, /隔空手势画图/);
   assert.match(html, /MediaPipe Hands/);
   assert.match(html, /21 个手部关键点/);
+  assert.match(html, /30 项/);
+  assert.match(html, /6 类/);
+  assert.match(html, /One Euro 平滑/);
+  assert.match(html, /120 帧真实视频验证/);
   assert.match(html, /固定阈值判断手指状态/);
   assert.match(html, /没有训练新的手势分类模型/);
-  assert.match(html, /assets\/handpose-session\.webp/);
+  assert.match(html, /assets\/handpose-studio\.webp/);
+  assert.doesNotMatch(html, /assets\/handpose-session\.webp/);
   assert.match(html, /assets\/handpose-landmarks\.webp/);
+  assert.match(html, /1440×900 界面预览/);
+  assert.doesNotMatch(html, /1440×900 实机界面/);
+  assert.match(css, /aspect-ratio:\s*16\s*\/\s*10/);
 });
 
 test('AIGC project includes the new family-scene experiment', () => {
@@ -92,7 +100,7 @@ test('project imagery loads reliably and carries useful alternative text', () =>
   assert.match(html, /assets\/zhigan_sys-ui\.webp/);
   assert.match(html, /assets\/rag-interface\.webp/);
   assert.match(html, /assets\/rag-interface-mobile\.webp/);
-  assert.match(html, /assets\/handpose-session\.webp/);
+  assert.match(html, /assets\/handpose-studio\.webp/);
   assert.match(html, /assets\/handpose-landmarks\.webp/);
   assert.match(html, /alt="[^"]+"[^>]*width="[0-9]+"[^>]*height="[0-9]+"/);
 });
