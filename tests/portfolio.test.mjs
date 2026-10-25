@@ -24,9 +24,10 @@ test('portfolio exposes the dual AI application and AIGC positioning', () => {
   assert.match(html, /把业务问题，做成能运行、能证明的 AI 作品/);
 });
 
-test('portfolio includes the three evidence-backed projects', () => {
+test('portfolio includes the four evidence-backed projects', () => {
   assert.match(html, /data-project="film"/);
   assert.match(html, /data-project="rag"/);
+  assert.match(html, /data-project="handpose"/);
   assert.match(html, /data-project="zhigan"/);
   assert.match(html, /58 题/);
   assert.match(html, /13 篇文档/);
@@ -34,6 +35,16 @@ test('portfolio includes the three evidence-backed projects', () => {
   assert.doesNotMatch(html, /14 篇文档 \/ 14 个检索片段/);
   assert.match(html, /响应时间缩短/);
   assert.match(html, /40%/);
+});
+
+test('computer-vision project explains the real gesture interaction boundary', () => {
+  assert.match(html, /隔空手势画图/);
+  assert.match(html, /MediaPipe Hands/);
+  assert.match(html, /21 个手部关键点/);
+  assert.match(html, /固定阈值判断手指状态/);
+  assert.match(html, /没有训练新的手势分类模型/);
+  assert.match(html, /assets\/handpose-session\.webp/);
+  assert.match(html, /assets\/handpose-landmarks\.webp/);
 });
 
 test('AIGC project includes the new family-scene experiment', () => {
@@ -81,5 +92,7 @@ test('project imagery loads reliably and carries useful alternative text', () =>
   assert.match(html, /assets\/zhigan_sys-ui\.webp/);
   assert.match(html, /assets\/rag-interface\.webp/);
   assert.match(html, /assets\/rag-interface-mobile\.webp/);
+  assert.match(html, /assets\/handpose-session\.webp/);
+  assert.match(html, /assets\/handpose-landmarks\.webp/);
   assert.match(html, /alt="[^"]+"[^>]*width="[0-9]+"[^>]*height="[0-9]+"/);
 });

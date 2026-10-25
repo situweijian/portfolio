@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>司徒炜健｜AI 应用开发与 AIGC 作品集</title>
-  <meta name="description" content="司徒炜健的 AI 应用与 AIGC 作品集：RAG 校园问答、智感视觉 Agent 工作流，以及 AIGC 概念短片《这次只投一家》。">
+  <meta name="description" content="司徒炜健的 AI 应用与 AIGC 作品集：RAG 校园问答、计算机视觉手势画图、智感视觉 Agent 工作流，以及 AIGC 影像实验。">
   <meta name="theme-color" content="#0b1217">
   <meta property="og:type" content="website">
   <meta property="og:title" content="司徒炜健｜AI 应用开发与 AIGC 作品集">
@@ -38,7 +38,7 @@
         <p class="hero-role">AI 应用开发与 AIGC 工作流 · 2027 届</p>
         <h1 id="hero-title">把业务问题，<br>做成能运行、能证明的 AI 作品。</h1>
         <div class="hero-lower">
-          <p class="hero-summary">用 RAG 解决真实问答，用 Agent 工作流压缩分析链路，也用 AI 影像把思路讲清楚。</p>
+          <p class="hero-summary">用 RAG 解决真实问答，用计算机视觉把手势变成画笔，用 Agent 工作流压缩分析链路，也用 AI 影像把思路讲清楚。</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#film">观看作品片</a>
             <a class="button button-secondary" href="#projects">查看项目</a>
@@ -89,7 +89,7 @@
     <section class="projects" id="projects" aria-labelledby="projects-title">
       <div class="section-heading reveal">
         <p class="section-label">作品档案</p>
-        <h2 id="projects-title">三件作品，三种把 AI 落到现实里的方式。</h2>
+        <h2 id="projects-title">四件作品，四种把 AI 落到现实里的方式。</h2>
       </div>
 
       <article class="project project-film reveal" data-project="film">
@@ -182,6 +182,45 @@
         </div>
       </article>
 
+      <article class="project project-handpose reveal" id="handpose" data-project="handpose">
+        <div class="project-copy">
+          <p class="project-kicker">计算机视觉 / 交互实验</p>
+          <h3>隔空手势画图</h3>
+          <p class="project-lead">把摄像头里的手部动作变成画笔，在不接触键鼠的情况下完成选色、绘画、擦除与撤销。</p>
+          <p>通过 MediaPipe Hands 获取 21 个手部关键点，再把手指伸展状态映射成固定交互规则；OpenCV 负责摄像头帧读取、工具栏命中、画布叠加与实时反馈。</p>
+          <dl class="metric-row">
+            <div><dt>21 个</dt><dd>手部关键点</dd></div>
+            <div><dt>6 项</dt><dd>交互功能扩展</dd></div>
+            <div><dt>实时</dt><dd>摄像头手势反馈</dd></div>
+          </dl>
+          <p class="boundary-note">当前使用固定阈值判断手指状态，没有训练新的手势分类模型；效果会受光照、遮挡、摄像头角度和左右手差异影响。</p>
+          <div class="pipeline">
+            <span>MediaPipe Hands</span>
+            <span>手指状态机</span>
+            <span>OpenCV 画布</span>
+            <span>手势工具栏</span>
+          </div>
+        </div>
+        <div class="handpose-gallery">
+          <figure class="handpose-session">
+            <img src="assets/handpose-session.webp" alt="隔空手势画图程序实机界面，顶部是颜色、橡皮擦和清空工具栏" width="888" height="497" loading="lazy" decoding="async">
+            <figcaption>摄像头实时手势会话</figcaption>
+          </figure>
+          <figure class="handpose-landmarks">
+            <img src="assets/handpose-landmarks.webp" alt="MediaPipe 手部 21 个关键点与左右手映射示意" width="870" height="637" loading="lazy" decoding="async">
+            <figcaption>21 点手部关键点</figcaption>
+          </figure>
+          <div class="handpose-model" aria-label="手势识别到绘画指令的处理流程">
+            <p>手势到指令</p>
+            <ol>
+              <li><span>01</span>关键点定位</li>
+              <li><span>02</span>手指伸展判断</li>
+              <li><span>03</span>触发画笔动作</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
       <article class="project project-zhigan reveal" data-project="zhigan">
         <div class="project-copy">
           <p class="project-kicker">Agent 工作流</p>
@@ -222,6 +261,7 @@
         <div class="skills">
           <span>Python / Flask</span>
           <span>LangChain / RAG</span>
+          <span>MediaPipe / OpenCV</span>
           <span>Coze / Agent 工作流</span>
           <span>AIGC 影像与剪辑</span>
           <span>测试与效果评测</span>
